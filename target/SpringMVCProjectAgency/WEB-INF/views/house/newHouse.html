@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>new House</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="d-flex justify-content-center">
+  <form  th:action="@{/houses/{agencyId}/save(agencyId=${agencyId})}" th:object="${newHouse}" th:method="post">
+
+<div>
+<label class="form-label">House Type</label><br>
+<input type="checkbox" id="apartment" name="houseType" value=" APARTMENT">
+<label th:field="*{houseType}" for="apartment"> APARTMENT</label><br>
+<input type="checkbox" id="house" name="houseType" value="HOUSE">
+<label th:field="*{houseType}" for="house">HOUSE</label><br>
+</div>
+
+<div>
+  <label for="address"> Address </label>
+  <input type="text" th:field="*{address}" id="address">
+</div>
+
+<div>
+  <label for="price"> Price </label>
+  <input type="number" th:field="*{price}" id="price">
+</div>
+
+<div>
+  <label for="room"> Room </label>
+  <input type="number" th:field="*{room}" id="room">
+</div>
+
+<div>
+  <label for="country"> Country </label>
+  <input type="text" th:field="*{country}" id="country">
+</div>
+
+<div>
+  <label for="description"> Description </label>
+  <input type="text" th:field="*{description}" id="description">
+</div>
+
+<div>
+<label class="form-label">Is Booked</label><br>
+<input type="checkbox" id="true" name="isBooked" value="TRUE">
+<label th:field="*{isBooked}" for="true">TRUE</label><br>
+<input type="checkbox" id="false" name="isBooked" value="FALSE">
+<label th:field="*{isBooked}" for="false">FALSE</label><br>
+</div>
+
+    <div>
+      <label for="image">Image </label>
+      <input type="text" th:field="*{image}" id="image">
+    </div>
+
+    <div>
+      <input type="submit" value="Save" class="btn btn-primary btn-lg">
+    </div>
+  </form>
+</div>
+</body>
+</html>

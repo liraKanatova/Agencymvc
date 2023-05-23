@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<head>
+  <meta charset="UTF-8">
+  <title>New Customer</title>
+</head>
+<body>
+
+<form th:method="POST" th:action="@{/customers/save}" th:object="${newCustomer}">
+
+  <div>
+    <label for="firstName">Customer FirstName</label>
+    <input type="text" th:field="*{firstName}" id="firstName">
+  </div>
+
+
+  <div>
+    <label for="lastName">Customer LastName</label>
+    <input type="text" th:field="*{lastName}" id="lastName">
+  </div>
+
+  <div>
+    <label for="email">Email</label>
+    <input type="text" th:field="*{email}" id="email">
+  </div>
+  <div>
+    <label for="gender">Gender </label>
+    <input type="text" th:field="*{gender}" id="gender">
+  </div>
+
+  <div>
+    <label for="phoneNumber">PhoneNumber </label>
+    <input type="number" th:field="*{phoneNumber}" id="phoneNumber">
+  </div>
+
+
+
+  <div>
+    <label for="dateOfBirth">DateOfBirth </label>
+    <input type="date" th:field="*{dateOfBirth}" id="dateOfBirth">
+  </div>
+
+  <div>
+    <label for="image">Image </label>
+    <input type="text" th:field="*{image}" id="image">
+  </div>
+
+
+
+
+  <div>
+    <button type="submit">Save Customer</button>
+  </div>
+
+
+</form>
+<br>
+<p style="text-align: center">
+<!--  <a class="btn btn-outline-primary" role="button" href="/customers/save">Add new Customers</a></p>-->
+
+</body>
+</html>

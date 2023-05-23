@@ -1,0 +1,95 @@
+
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Main Page Booking</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+          rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+          crossorigin="anonymous">
+
+</head>
+<body>
+
+<div class="container mt-3" >
+    <table class="table table-striped" >
+        <tbody>
+
+        <div class="wrapper-btn">
+            <a th:href="@{/bookings}">
+                <button class="btn btn-primary" type="button">back</button>
+            </a>
+            <a th:href="@{/{id}/bookings/new(id=${houseId})}">
+                <button class="btn btn-primary" type="button">Add new Booking</button>
+            </a>
+        </div>
+
+
+
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">Customers FirstName</th>
+            <th scope="col">Houses HouseType</th>
+            <th scope="col">Update</th>
+            <th scope="col">Delete</th>
+
+
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="booking : ${bookings}" >
+            <td th:text="${booking.getCustomer().getFirstName()+' '+ booking.getCustomer().lastName}"></td>
+            <td th:text="${booking.getHouse().getHouseType()}"></td>
+
+            <td>
+                <form th:method="GET"
+                      th:action="@{/{id}/bookings/{bookId}/edit(id=${houseId},bookId=${booking.getId()})}">
+                    <input type="submit" class="btn btn-outline-primary" th:value=" Edit ">
+                </form>
+            </td>
+
+
+            <td>
+                <form th:method="DELETE"
+                      th:action="@{/{id}/bookings/{bookingId}/delete(id=${houseId},bookingId=${booking.getId()})}">
+                    <input type="submit" class="btn btn-outline-primary" th:value="  Delete  ">
+                </form>
+            </td>
+
+
+
+
+<!--        </tr>-->
+        </tbody>
+<!--        <tbody th:each="booking: ${bookings}" >-->
+<!--        <tr  class="table">-->
+<!--            <td th:text="${booking.customer.firstName}"></td>-->
+<!--            <td th:text="${booking.house.houseType}"></td>-->
+
+
+<!--            <td>-->
+<!--                <form th:method="GET"-->
+<!--                      th:action="@{/{id}/bookings/{bookingId}/edit(bookId=${booking.id})}">-->
+<!--                    <input type="submit" class="btn btn-outline-primary" th:value=" Edit ">-->
+<!--                </form>-->
+<!--            </td>-->
+<!--            <td>-->
+<!--                <form th:method="DELETE"-->
+<!--                      th:action="@{/{id}/bookings/{bookingId}/delete(bookingId=${booking.getId()})}">-->
+<!--                    <input type="submit" class="btn btn-outline-primary" th:value="  Delete  ">-->
+<!--                </form>-->
+<!--            </td>-->
+<!--        </tr>-->
+        </tbody>
+    </table>
+</div>
+
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
+</html>
+

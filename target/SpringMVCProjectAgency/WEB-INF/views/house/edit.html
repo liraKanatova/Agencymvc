@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update House</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+          rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+          crossorigin="anonymous">
+</head>
+<body>
+
+<form th:method="PUT" th:action="@{/houses/{agencyId}/{houseId}/update (agencyId=${agencyId}, houseId=${house.getId()})}" th:object="${house}">
+    <div>
+
+
+    <div >
+    <label class="form-label">House Type</label><br>
+    <input type="checkbox" id="apartment" name="houseType" value="APARTMENT">
+    <label th:field="*{houseType}" for="apartment">APARTMENT</label><br>
+    <input type="checkbox" id="house" name="houseType" value="HOUSE">
+    <label th:field="*{houseType}" for="house">HOUSE</label><br>
+    </div>
+
+    <div>
+        <label for="address"> Address </label>
+        <input type="text" th:field="*{address}" id="address">
+    </div>
+
+    <div>
+        <label for="price"> Price </label>
+        <input type="number" th:field="*{price}" id="price">
+    </div>
+
+    <div>
+        <label for="room"> Room </label>
+        <input type="number" th:field="*{room}" id="room">
+    </div>
+
+
+
+    <div>
+        <label for="country"> Country </label>
+        <input type="text" th:field="*{country}" id="country">
+    </div>
+
+    <div>
+        <label for="description"> Description </label>
+        <input type="text" th:field="*{description}" id="description">
+    </div>
+
+    <div>
+    <label class="form-label">Is Booked</label><br>
+    <input type="checkbox" id="true" name="isBooked" value="TRUE">
+    <label th:field="*{isBooked}" for="true">TRUE</label><br>
+    <input type="checkbox" id="false" name="isBooked" value="FALSE">
+    <label th:field="*{isBooked}" for="false">FALSE</label><br>
+    </div>
+
+        <div>
+            <label for="image">Image </label>
+            <input type="text" th:field="*{image}" id="image">
+        </div>
+
+
+    <input type="submit" value="update House"/>
+    </div>
+</form>
+<a class="btn btn-primary" th:href="@{/houses/{agencyId}(agencyId=${agencyId})}">
+    Exit
+</a>
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
+</html>

@@ -1,0 +1,70 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<head>
+  <meta charset="UTF-8">
+  <title>Main Page Customer</title>
+  <style>
+    .container{
+      display: flex;
+      flex-wrap: wrap;
+    }
+  </style>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
+        rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+</head>
+<body>
+
+<div class="container" style="width: 80%; margin: 0 auto">
+  <div class="card" style="width: 18rem;" th:each="customer:${customers}">
+    <img th:src="${customer.getImage()}" class="card-img-top" alt="Company's Image">
+    <div class="card-body">
+      <h5 class="card-title" th:text="${customer.getFirstName()}">First Name</h5>
+
+
+
+
+      <form th:method="DELETE" th:action="@{/customers/{id}/delete (id=${customer.getId()}) }">
+        <input type="submit" th:value="Delete">
+      </form>
+
+
+
+
+      </form>
+      <form th:method="GET" th:action="@{/customers/{customerId}(customerId=${customer.getId()})}">
+        <input type="submit" class="btn btn-primary" th:value="Profile"/>
+      </form>
+
+
+
+
+
+      <form th:method="GET" th:action="@{/customers/{cusId}/edit(cusId=${customer.getId()})}">
+        <input type="submit" class="btn btn-outline-primary"  th:value="Update"/>
+      </form>
+
+      <form th:method="GET" th:action="@{/customers/{id}/assignPage(id=${customer.getId()})}">
+        <input type="submit" class="btn btn-outline-primary"  th:value="Assign"/>
+      </form>
+
+    </div>
+  </div>
+</div>
+
+<br>
+<p style="text-align:center;">
+  <a class="btn btn-outline-primary" role="button" href="/customers/new">Add new Customers</a></p>
+<div class="wrapper-btn">
+  <a th:href="@{/agencies}">
+    <button class="btn btn-primary" type="button">back</button>
+  </a>
+</div>
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+</html>
+
+
+</html>

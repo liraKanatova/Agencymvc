@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>new Booking</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <style>
+        .vvvb {
+            display: flex;
+            flex-wrap: wrap;
+            width: auto;
+        }
+    </style>
+
+
+</head>
+<body >
+< class="vvvb">
+    <form class="p-5 bg-light" th:action="@{/{id}/bookings/save(id=${houseId})}"
+          th:object="${booking}" th:method="POST">
+
+        <div>
+            <select th:field="*{customerId}"  required>
+                <option value="">Select a customer</option>
+                <option th:each="customer : ${customers}" th:value="${customer.getId()}"
+                        th:text="${customer.firstName}"></option>
+            </select>
+
+            <select th:field="*{houseId}"  required>
+                <option value="">--Select a house--</option>
+                <option th:each="house : ${houses}" th:value="${house.getId()}"
+                        th:text="${house.houseType}"></option>
+            </select>
+            <p style="color: red" th:text="${errorMessage}"></p>
+
+
+<!--            <form th:method="POST"-->
+<!--                  th:action="@{/bookings/{bookingId}/assignHouse(bookingId=${booking.getId()})}">-->
+<!--                <select style="width: 90px" name="instructor" class="form-select form-select-sm" aria-label=".form-select-sm example"-->
+<!--                        th:object="${customer}"-->
+<!--                        th:field="*{customerId}">-->
+<!--                    <option th:each="customer : ${customers}"-->
+<!--                            th:value="${customer.id}"-->
+<!--                            th:text="${customer.firstName}"></option>-->
+<!--                </select>-->
+<!--                <input type="submit" name="text" class="input" value="sumbit" placeholder="Type here...">-->
+<!--            </form>-->
+
+<!--            <form th:method="POST"-->
+<!--                  th:action="@{/bookings/{bookindId}/assignHouse(bookingId=${booking.getId()})}">-->
+<!--                <select style="width: 90px" name="instructor" class="form-select form-select-sm" aria-label=".form-select-sm example"-->
+<!--                        th:object="${house}"-->
+<!--                        th:field="*{houseId}">-->
+<!--                    <option th:each="house : ${houses}"-->
+<!--                            th:value="${house.id}"-->
+<!--                            th:text="${house.houseType}"></option>-->
+<!--                </select>-->
+            <div>
+
+
+                <input type="submit" name="text" class="input" value="submit" placeholder="Type here...">
+        </div>
+        </div>
+    </form>
+
+</div>
+</body>
+
+</html>
