@@ -45,17 +45,6 @@ public class AgencyServiceImpl implements AgencyService {
         return agencyRepository.getAllSearch(word) ;
     }
 
-//    @Override
-//    public List<Agency> getAllAgencies(String word) {
-//        try{
-//            if(word != null && !word.trim().isEmpty()){
-//                return agencyRepository.search(word);
-//            }else {
-//                return agencyRepository.getAllAgencies();
-//            }
-//        }catch (RuntimeException e){
-//            System.out.println(e.getMessage());
-//        }
-//       return null;
-//    }
+
+
 }

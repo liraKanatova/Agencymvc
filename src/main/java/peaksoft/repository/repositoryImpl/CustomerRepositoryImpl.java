@@ -7,8 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import peaksoft.entity.Agency;
 import peaksoft.entity.Customer;
-import peaksoft.exception.MyException;
 import peaksoft.repository.CustomerRepository;
+
 import java.util.ArrayList;
 import java.util.List;
 @Repository
@@ -33,9 +33,6 @@ public class CustomerRepositoryImpl implements CustomerRepository {
 
     @Override
     public List<Customer> getAllCustomers(Long id) {
-//        return entityManager.createQuery("select c from Customer c join c.agencies a where a.id= : id", Customer.class)
-//                .setParameter("id",id).getResultList();
-
         Agency agency = entityManager.find(Agency.class, id);
         return agency.getCustomers();
     }
@@ -72,29 +69,12 @@ public class CustomerRepositoryImpl implements CustomerRepository {
             a.getCustomers().remove(customer);
         }
     }
-//            try {
-//                Customer customer = entityManager.find(Customer.class, id);
-//                if (customer.getId().equals(id)){
-//                    entityManager.remove(customer);
-//                }else {
-//                    throw new MyException("Customer of this " + id + " was not found!");
-//                }
-//            }catch (MyException e){
-//                System.out.println(e.getMessage());
-//            }
-//        }
 
 
 
 
-//    @Override
-//    public void assignCustomerToAgency(Long customerId, Long agencyId) {
-//        Customer customer = entityManager.find(Customer.class, customerId);
-//        Agency agency = entityManager.find(Agency.class, agencyId);
-//        customer.getAgencies().add(agency);
-//        agency.getCustomers().add(customer);
-//        entityManager.merge(customer);
-  //  }
+
+
     @Override
     public void assignCustomerToAgency(Long customerId, List<Long> agencyIdes) {
         Customer customer = entityManager.find(Customer.class, customerId);

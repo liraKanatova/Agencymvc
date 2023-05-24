@@ -2,7 +2,6 @@ package peaksoft.service.serviceImpl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import peaksoft.entity.Agency;
 import peaksoft.entity.Customer;
 import peaksoft.repository.CustomerRepository;
 import peaksoft.service.CustomerService;

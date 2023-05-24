@@ -52,10 +52,6 @@ public class BookingRepositoryImpl implements BookingRepository {
     @Transactional
     @Override
     public void updateBooking(Booking booking) {
-//        Booking booking = entityManager.find(Booking.class, id);
-////        Booking booking = getBookingById(id);
-//        booking.setCustomer(newBooking.getCustomer());
-//        booking.setHouse(newBooking.getHouse());
         entityManager.merge(booking);
         System.out.println("updated");
     }

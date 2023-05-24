@@ -5,10 +5,8 @@ import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import peaksoft.entity.Agency;
-import peaksoft.entity.Customer;
 import peaksoft.entity.House;
-import peaksoft.exception.MyException;
+
 import peaksoft.repository.HouseRepository;
 
 import java.util.List;
@@ -55,20 +53,6 @@ public class HouseRepositoryImpl implements HouseRepository {
 
     @Override
     public void deleteHouseById(Long id) {
-//        try {
-//            House house = entityManager.find(House.class, id);
-//            if (house.getId().equals(id)){
-//                entityManager.remove(house);
-//            }else {
-//                throw new MyException("Customer of this " + id + " was not found!");
-//            }
-//        }catch (MyException e){
-//            System.out.println(e.getMessage());
-//        }
-//        House house = entityManager.find(House.class, id);
-//        house.getAgency().getHouses().remove(house);
-//        house.setAgency(null);
-//        entityManager.remove(house);
         House house = entityManager.find(House.class, id);
         house.setAgency(null);
         house.setBooking(null);
